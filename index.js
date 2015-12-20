@@ -92,8 +92,9 @@ module.exports = function (options, wp, done) {
     } else if (entry.length < 2) {
       entry = entry[0] || entry;
     }
-
-    options.entry = options.entry || entry;
+    var allEntries = {};
+    allEntries = Object.assign(allEntries, options.entry, entry);
+    options.entry = allEntries;
     options.output.path = options.output.path || process.cwd();
     options.output.filename = options.output.filename || '[hash].js';
     entry = [];
